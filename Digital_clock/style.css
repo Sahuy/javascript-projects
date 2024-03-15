@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    font-family: Arial;
+    
+    }
+
+   html, body{
+    height: 100%;
+    width:  100%;
+    background-color: antiquewhite;
+    }
+
+   
+
+.img{
+    
+   
+    color:rgb(9, 204, 45);
+    margin-top: 10px;
+    padding-top: 20%;
+    
+}
+
+#time{
+    font-size: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
