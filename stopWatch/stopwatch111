@@ -1,0 +1,60 @@
+let count = 0; // Initialized all counters to zero initially
+let sec = 0;
+let min = 0;
+let hr = 0;
+let timer = false; // Timer is initially off
+
+function stop() { // Defined a function named "stop" to turn off the timer
+    timer = false;
+}
+
+function start() { // Defined a function named "start" to start the timer
+    timer = true;
+    stopwatch(); // Called the stopwatch function to start the timer
+}
+
+function reset() { // Defined a function named "reset" to reset the timer and counters to zero
+    timer = false; // Turned off the timer
+    hr = 0; // Set hr, min, sec, and count counters to zero
+    min = 0;
+    sec = 0;
+    count = 0; 
+    document.getElementById("hr").innerHTML = "00"; // Set the hr element in HTML to "00"
+    document.getElementById("min").innerHTML = "00"; // Set the min element in HTML to "00"
+    document.getElementById("sec").innerHTML = "00"; // Set the sec element in HTML to "00"
+    document.getElementById("count").innerHTML = "00"; // Set the count element in HTML to "00"
+}
+
+function stopwatch() { // Defined a function named "stopwatch"
+    if (timer == true) { // If the timer is running
+        count = count + 1; // Incremented the count by 1
+
+        if (count == 100) { // If the count reaches 100
+            sec = sec + 1; // Incremented the seconds by 1
+            count = 0; // Reset the count to zero
+        }
+
+        if (sec == 60) { // If seconds reach 60
+            min = min + 1; // Increment minutes by 1
+            sec = 0; // Reset seconds to zero
+        }
+
+        if (min == 60) { // If minutes reach 60
+            hr = hr + 1; // Increment hours by 1
+            min = 0; // Reset minutes to zero
+            sec = 0; // Reset seconds to zero
+        }
+
+        let hrString = hr < 10 ? "0" + hr : hr; // Convert hr to string, prepend '0' if hr is less than 10
+        let minString = min < 10 ? "0" + min : min; // Convert min to string, prepend '0' if min is less than 10
+        let secString = sec < 10 ? "0" + sec : sec; // Convert sec to string, prepend '0' if sec is less than 10
+        let countString = count < 10 ? "0" + count : count; // Convert count to string, prepend '0' if count is less than 10
+
+        document.getElementById("hr").innerHTML = hrString; // Update hr element in HTML
+        document.getElementById("min").innerHTML = minString; // Update min element in HTML
+        document.getElementById("sec").innerHTML = secString; // Update sec element in HTML
+        document.getElementById("count").innerHTML = countString; // Update count element in HTML
+
+        setTimeout(stopwatch, 10); // Call stopwatch function again after 10 milliseconds
+    }
+}
